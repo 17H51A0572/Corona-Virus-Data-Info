@@ -1,0 +1,24 @@
+<h1>Welcome to Corona tracker</h1>
+<form style="width: 100%;" [formGroup]="dataTracker">
+    <select formControlName="get_country" style="font-size: 20px;">
+        <option [ngValue]="null" disabled>Choose Country...</option>
+        <option *ngFor="let prf of allCountries" [ngValue]="prf">
+            {{ prf.cName }}
+        </option>
+    </select>
+    <button class="btn btn-danger m-2" ng-click="getRequest()"  (click)="track_data()">Track Data</button>
+    <!-- <input type="text" *ngIf=false [ngValue]="dummy" id="txt"> -->
+</form>
+    <!-- <p id="abc">{{dataTracker.cName}}</p> -->
+    <!-- <p>"Hiiiii"</p> -->
+<p id="abc" style="font-size: 25px; font-weight: 600;">DataTracker</p>
+<div *ngIf="response">
+    <p>Total Cases:{{response.countrydata[0].total_cases}}</p>
+    <p>Total Recovered:{{response.countrydata[0].total_recovered}}</p>
+    <p>Total Unresolved:{{response.countrydata[0].total_unresolved}}</p>
+    <p>Total Deaths:{{response.countrydata[0].total_deaths}}</p>
+    <p>Total New Cases:{{response.countrydata[0].total_new_cases_today}}</p>
+    <p>Total New Deaths Today:{{response.countrydata[0].total_new_deaths_today}}</p>
+    <p>Active Cases:{{response.countrydata[0].total_active_cases}}</p>
+    <p>Serious Cases:{{response.countrydata[0].total_serious_cases}}</p>
+</div>
